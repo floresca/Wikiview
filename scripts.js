@@ -1,36 +1,42 @@
 $(document).ready(function() {
-    
-            $("#wikiLocator").click(function(){
+        
+    $("#wikiLocator").click(function(){
                 
-                $(".results").empty();
+        $(".results").empty();
                 
-                if($("#searchBar").val() == ""){
-                    $("#searchBar").attr("placeholder", "Boo! Please enter something :(");
-                } else  {
-                    var query = $("#searchBar").val().replace(/\s+/g,"%20");
-                    var wikiCall = "https://en.wikipedia.org/w/api.php?origin=*&format=json&formatversion=2&action=query&generator=search&gsrnamespace=0&gsrsearch="+query+"&gsrlimit=10&prop=pageimages&pilimit=max";   
+        if($("#searchBar").val() == ""){
+            $("#searchBar").attr("placeholder", "Boo! Please enter something :(");
+        } else  {
+            var query = $("#searchBar").val().replace(/\s+/g,"%20");
+            var wikiCall = "https://en.wikipedia.org/w/api.php?origin=*&format=json&formatversion=2&action=query&generator=search&gsrnamespace=0&gsrsearch="+query+"&gsrlimit=10&prop=pageimages&pilimit=max";   
                     
-                    $.getJSON(wikiCall, wikiHunt);
+            $.getJSON(wikiCall, wikiHunt);
                     
                     
-                    function wikiHunt(wikiWhere){
+            function wikiHunt(wikiWhere){
                         
                         
-                        for(var i = 0; i < wikiWhere.query.pages.length; i++){
-                            var wikiName = wikiWhere.query.pages[i].title;
-                            var wikiNewName = wikiName.replace(/\s+/g, "_");
-                            var wikiPickMe = "https://en.wikipedia.org/wiki/"+wikiNewName;
-                            var nameHTML = "<h3 class='PageName'>"+wikiName+"</h3>";
-                            var wikiGO = "<a class='pageLink' href='"+wikiPickMe+"'>"+nameHTML+"</a>";
+                for(var i = 0; i < wikiWhere.query.pages.length; i++){
+                    var wikiName = wikiWhere.query.pages[i].title;
+                    var wikiNewName = wikiName.replace(/\s+/g, "_");
+                    var wikiPickMe = "https://en.wikipedia.org/wiki/"+wikiNewName;
+                    var nameHTML = "<h3 class='PageName'>"+wikiName+"</h3>";
+                    var wikiGO = "<a class='pageLink' href='"+wikiPickMe+"'>"+nameHTML+"</a>";
                             
-                            $(".results").append(wikiGO);
+                    $(".results").append(wikiGO);
                             
-                        }
-                    }
-                    
-                $('input[type="searcher"]').val("").attr( "placeholder", 'Thank you!');
                 }
-            });
+            }
+                    
+        $('input[type="searcher"]').val("").attr( "placeholder", 'Thank you!');
+        }
+    });
+    
+    $("#searchBar").keypress(function(enter){
+        if(enter.which == 13){
+            $("#wikiLocator").click();
+        }
+    });
 });
 
 //Attemp at pulling wikipedia pictures til I realized their API is too much of a nightmare:
