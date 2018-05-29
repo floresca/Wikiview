@@ -3,14 +3,14 @@
     <head>
         <title>Wikipedia Viewer</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="styles.css" type="text/css"/>
     </head>
     <body>
         <div class="search container">
             <form>
-                <div class="form-group container">
+                <div class="form-group container" id="looker">
                     <div class="input-group">
-                        <input type="searcher" class="form-control" id="searchBar" aria-describedby="lets search for something" placeholder="Did you know..." required/>
+                        <input type="searcher" class="form-control" id="searchBar" aria-describedby="lets search for something" placeholder="Did you know...">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" id="wikiLocator">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -18,14 +18,15 @@
                         </span>
                      </div>
                     <a href="https://en.wikipedia.org/wiki/Special:Random">
-                        <button type="button" class="btn btn-outline-success btn-lg btn-block" id="Lucky">Are you feeling lucky?</button>
+                        <button type="button" class="btn btn-outline-success btn-lg btn-block" id="Lucky">Try Your Luck!</button>
                     </a>
                 </div>
             </form>
-        </div>
-        <div class="container results row">
+            <div class="container results row">
             
+            </div>
         </div>
+        
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

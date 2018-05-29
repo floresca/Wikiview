@@ -8,7 +8,7 @@ $(document).ready(function() {
             $("#searchBar").attr("placeholder", "Boo! Please enter something :(");
         } else  {
             var query = $("#searchBar").val().replace(/\s+/g,"%20");
-            var wikiCall = "https://en.wikipedia.org/w/api.php?origin=*&format=json&formatversion=2&action=query&generator=search&gsrnamespace=0&gsrsearch="+query+"&gsrlimit=10&prop=pageimages&pilimit=max";   
+            var wikiCall = "https://en.wikipedia.org/w/api.php?origin=*&format=json&formatversion=2&action=query&generator=search&gsrnamespace=0&gsrsearch="+query+"&gsrlimit=18&prop=pageimages&pilimit=max";   
                     
             $.getJSON(wikiCall, wikiHunt);
                     
@@ -20,10 +20,11 @@ $(document).ready(function() {
                     var wikiName = wikiWhere.query.pages[i].title;
                     var wikiNewName = wikiName.replace(/\s+/g, "_");
                     var wikiPickMe = "https://en.wikipedia.org/wiki/"+wikiNewName;
-                    var nameHTML = "<h3 class='PageName'>"+wikiName+"</h3>";
+                    var nameHTML = "<h5 class='PageName'>"+wikiName+"</h5>";
                     var wikiGO = "<a class='pageLink' href='"+wikiPickMe+"'>"+nameHTML+"</a>";
                             
                     $(".results").append(wikiGO);
+                    $("#Lucky").text("Try Your Luck! (You know you want to)")
                             
                 }
             }
